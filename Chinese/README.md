@@ -156,51 +156,58 @@ var person = new Person();
 	* 如有使用做，请谈谈你都使用过那些类似库文件。比如Mustache.js,Handlebars等等。
 
 * 请解释变量声明提升。
-
+b();function b(){};
+undefined
+c();var c = function(){};
+TypeError: undefined is not a function
 * 请描述下事件冒泡机制。
-
+-----
+|<div>
+------  
+|event
+<div> click!
 * "attribute"和"property"的区别是什么？
-
+dom vs js
 * 为什么扩展JavaScript内置对象是个坏做法？
 
 * 为什么扩展JavaScript内置对象是个好做法？
 
 * 请指出document load和document ready的区别。(这是个问题的问题）
-
+all ready vs dom ready
 * '=='和'==='有什么不同？
-
+类型转换 vs 不转换
 * 你如何获取浏览器URL中查询字符串中的参数。
-
+querystring
 * 请解释一下JavaScript的同源策略。
-
+cors..
 * 请解释一下事件代理。
-
+let parent handle
 * 请描述一下JavaScript的继承模式。
 
 * 如何实现下列代码：
 ```javascript
 [1,2,3,4,5].duplicator(); // [1,2,3,4,5,1,2,3,4,5]
 ```
-
+Array.prototype.duplicator = function(){var self = this;this.forEach(function(e){self.push(e);})}
 * 描述一种JavaScript memoization(避免重复运算)的策略。
-
+缓存递归中间结果
 * 什么是三元条件语句？
 
 * 函数的参数元是什么？
 
 * 什么是"use strict"?使用它的好处和坏处分别是什么？
-
+ ECMAScript 5 Strict Mode
 * JavaScript内存泄漏。
 	* 什么是内存泄漏？
 	* 哪些情况下会导致内存泄漏？
 	* 有什么样的工具可以检测内存泄漏？
 
 * 变量的数据类型( 基本类型和引用类型 )。
-	* 什么是基本类型值？
-	* JavaScript中有哪些基本类型值？
-	* 什么是引用类型值？
-	* 基本类型值和引用类型值在内存中的保存方式有什么不同？
-	* 基本类型值和引用类型值的"复制"在内存中有什么不同？
+	* 什么是基本类型值？stack
+	* JavaScript中有哪些基本类型值？number string boolean null undefined
+	* 什么是引用类型值？heap Object sting number boolean
+	* 基本类型值和引用类型值在内存中的保存方式有什么不同？值，引用地址
+	* 基本类型值和引用类型值的"复制"在内存中有什么不同？按位，地址
 
 * typeof 与 instanceof 操作符。	
 
@@ -208,7 +215,7 @@ var person = new Person();
 ## JS代码示例：
 
 ```javascript
-~~3.14
+~~3.14 -4 3
 ```
 问题：上面的语句的返回值是什么？
 **答案：3**
@@ -284,9 +291,11 @@ function foo(bar1, bar2, bar3){}
 * 你知道那些针对jQuery的优化方法。
 
 * 请解释'.end()'的用途。
-
+stop travesaling, pop
 * 你如何给一个事件处理函数命名空间，为什么要这样做？
-
+$("#test").bind('click.a',function(){  
+    alert(1);  
+});  
 * 请说出你可以传递到jQuery方法的四种不同值。
 	* 选择器（字符串），HTML（字符串），回调函数，HTML元素，对象，数组，元素数组，jQuery对象等。
 
@@ -297,21 +306,22 @@ function foo(bar1, bar2, bar3){}
 * 请指出'.bing()','.live()'和'.delegate()'的区别。
 
 * 请指出'$'和'$.fn'的区别？或者说出'$.fn'的用途。
-
+$.xxx, $(xx).xxx
 * 请优化下列选择器：
 ```javascript
 $(".foo div#bar:eq(0)")
 ```
 
 * 'delegate()'和'live()'有什么区别? 
-
+委托，live委托到html
 
 ## CSS相关问题
 
 * 描述css reset的作用和用途。
 
 * 描述下浮动和它的工作原理。
-
+浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
+由于浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样。
 * 清除浮动的方法有那些，分别适用于什么情形。
 
 * 解释css sprites,如何使用。
